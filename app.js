@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+var bodyParser = require('body-parser')
 const { faker } = require('@faker-js/faker')
 const swaggerJsdoc = require("swagger-jsdoc"),
     swaggerUi = require("swagger-ui-express");
@@ -26,6 +27,7 @@ const options = {
     apis: ["./routes/books.js"],
 };
 const specs = swaggerJsdoc(options);
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(
     "/api-docs",
     swaggerUi.serve,
@@ -42,9 +44,9 @@ const getItem = () => {
     return post
 }
 
-function getList() {
+function getList(num) {
     let m = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < num; i++) {
         m.push(getItem())
     }
     return m
@@ -53,7 +55,9 @@ function getList() {
 
 app.get('/list', (req, res) => {
     res.json({
-        data: getList()
+        code: 200,
+        message: 'success',
+        data: getList(req?.query?.pageSize || 8)
     })
 })
 
