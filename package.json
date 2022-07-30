@@ -4,9 +4,12 @@
   "license": "MIT",
   "dependencies": {
     "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
+    "nanoid": "^4.0.0",
     "swagger-jsdoc": "^6.2.1",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.3.0"
