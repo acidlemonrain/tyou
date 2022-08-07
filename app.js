@@ -45,6 +45,7 @@ const getItem = () => {
     const post = {
         title: faker.animal.crocodilia(),
         avatar: faker.image.avatar(),
+        username: faker.name.findName(),
         vote: Math.ceil(Math.random() * 2000),
         image: faker.image.abstract(500, 700)
     }
